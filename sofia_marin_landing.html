@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofía Marín — Centro Estético</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:     #FAF7F4;
+    --warm-white:#FFFEFB;
+    --blush:     #E8C4B8;
+    --rose:      #C97B6E;
+    --rose-deep: #A85D52;
+    --taupe:     #9E8E85;
+    --charcoal:  #2E2928;
+    --ink:       #1A1615;
+    --gold:      #C9A96E;
+    --gold-light:#E8D5B0;
+    --mist:      #F0EBEA;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 28px;
+    --radius-xl: 40px;
+
+    --shadow-soft: 0 4px 24px rgba(46,41,40,0.08);
+    --shadow-card: 0 8px 40px rgba(46,41,40,0.12);
+    --shadow-hover: 0 16px 56px rgba(46,41,40,0.18);
+
+    --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    line-height: 1.1;
+  }
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+  h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 1.05; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.15; }
+  h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); line-height: 1.2; }
+  h4 { font-size: 1.15rem; font-weight: 500; }
+
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rose);
+  }
+
+  .price-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--rose-deep);
+    letter-spacing: -0.01em;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    height: 72px;
+    background: rgba(250,247,244,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(201,123,110,0.12);
+    transition: var(--transition);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 48px;
+    width: auto;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rose); }
+
+  .nav-cta {
+    background: var(--rose) !important;
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 100px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--rose-deep) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #2E2928 0%, #3D2B27 50%, #4A3530 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem);
+    max-width: 680px;
+  }
+
+  .hero-content .eyebrow { color: var(--gold-light); margin-bottom: 1.2rem; display: block; }
+  .hero-content h1 { color: white; margin-bottom: 1.5rem; }
+  .hero-content h1 em { font-style: italic; color: var(--blush); }
+  .hero-subtitle {
+    color: rgba(255,255,255,0.72);
+    font-size: 1.05rem;
+    max-width: 460px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.8rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border: 1px solid rgba(201,169,110,0.4);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    background: rgba(201,169,110,0.08);
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--rose);
+    color: white;
+    box-shadow: 0 6px 24px rgba(201,123,110,0.4);
+  }
+  .btn-primary:hover {
+    background: var(--rose-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(201,123,110,0.5);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.35);
+  }
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: float 2.2s ease-in-out infinite;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTION BASES ── */
+  section { position: relative; }
+
+  .section-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 3.5rem);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .section-header .eyebrow { display: block; margin-bottom: 0.8rem; }
+  .section-header h2 { color: var(--charcoal); }
+  .section-header p {
+    margin-top: 1rem;
+    color: var(--taupe);
+    font-size: 1rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .divider {
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+    border-radius: 2px;
+    margin: 1rem auto 0;
+  }
+
+  /* ── ABOUT / CREDENTIALS STRIP ── */
+  .about {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    background: var(--warm-white);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    box-shadow: var(--shadow-card);
+  }
+
+  .about-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .about-img-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(46,41,40,0.3) 100%);
+    z-index: 1;
+  }
+
+  .cert-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    background: rgba(250,247,244,0.95);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-md);
+    padding: 12px 20px;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  .cert-badge .eyebrow { margin-bottom: 2px; }
+  .cert-badge p { font-size: 0.8rem; color: var(--charcoal); font-weight: 500; }
+
+  .about-content { padding: clamp(0, 2vw, 2rem) 0; }
+  .about-content .eyebrow { margin-bottom: 0.8rem; display: block; }
+  .about-content h2 { color: var(--charcoal); margin-bottom: 1.2rem; }
+  .about-content p { color: var(--taupe); margin-bottom: 1.2rem; line-height: 1.75; }
+
+  .stats-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--mist);
+  }
+
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: var(--rose);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-top: 4px;
+  }
+
+  /* ── MENU / INDEX ── */
+  .menu-section {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    background: var(--cream);
+  }
+
+  .menu-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .menu-col-header {
+    padding: 1.2rem 1.8rem;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .menu-col-header.facial {
+    background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+    color: white;
+  }
+
+  .menu-col-header.corporal {
+    background: linear-gradient(135deg, var(--charcoal), #4A3530);
+    color: white;
+  }
+
+  .menu-list {
+    background: white;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.8rem;
+    border-bottom: 1px solid var(--mist);
+    text-decoration: none;
+    transition: background 0.2s, padding-left 0.2s;
+    gap: 1rem;
+  }
+
+  .menu-item:last-child { border-bottom: none; }
+  .menu-item:hover { background: var(--mist); padding-left: 2.2rem; }
+
+  .menu-item-name {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    flex: 1;
+  }
+
+  .menu-item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--rose);
+    white-space: nowrap;
+  }
+
+  .menu-dot {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--blush) 0, var(--blush) 3px, transparent 3px, transparent 8px);
+    margin: 0 0.8rem;
+    min-width: 20px;
+  }
+
+  /* ── TREATMENT CARDS ── */
+  .treatments {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    background: linear-gradient(180deg, var(--cream) 0%, var(--mist) 100%);
+  }
+
+  .treatments-facial { background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%); }
+  .treatments-corporal { background: linear-gradient(180deg, var(--cream) 0%, var(--mist) 100%); }
+
+  .section-category-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .label-facial { background: var(--rose); color: white; }
+  .label-corporal { background: var(--charcoal); color: white; }
+
+  .treatment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.8rem;
+    margin-top: 1rem;
+    align-items: start;
+  }
+
+  .treatment-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition), box-shadow var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .treatment-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-img {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .treatment-card:hover .card-img img { transform: scale(1.05); }
+
+  .card-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(46,41,40,0.6) 100%);
+  }
+
+  .card-price-pill {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(250,247,244,0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--rose-deep);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+
+  .card-body {
+    padding: 1.6rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-body h3 {
+    font-size: 1.35rem;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .card-body .tagline {
+    font-size: 0.85rem;
+    color: var(--rose);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .card-body p {
+    font-size: 0.88rem;
+    color: var(--taupe);
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
+  }
+
+  .steps-toggle {
+    background: none;
+    border: 1px solid var(--mist);
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    margin-bottom: 0.8rem;
+  }
+
+  .steps-toggle:hover { border-color: var(--rose); color: var(--rose); }
+  .steps-toggle .arrow { transition: transform 0.25s; display: inline-block; }
+  .steps-toggle.open .arrow { transform: rotate(180deg); }
+
+  .steps-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .steps-list.open { max-height: 600px; }
+
+  .steps-list ol {
+    list-style: none;
+    padding: 0.8rem 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .steps-list li {
+    font-size: 0.8rem;
+    color: var(--taupe);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--mist);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .steps-list li:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    color: var(--rose);
+    font-weight: 600;
+    min-width: 16px;
+  }
+
+  /* ── SEROTERAPIA SPECIAL CARD ── */
+  .suero-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    margin-top: 2rem;
+  }
+
+  .suero-header {
+    background: linear-gradient(135deg, var(--charcoal), #4A3530);
+    padding: 2rem 2.5rem;
+    color: white;
+  }
+
+  .suero-header h3 { color: white; font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .suero-header p { color: rgba(255,255,255,0.72); font-size: 0.9rem; }
+
+  .suero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--mist);
+  }
+
+  .suero-item {
+    background: white;
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+  }
+
+  .suero-item h4 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.4rem;
+  }
+
+  .suero-item .price-tag { font-size: 1.3rem; }
+
+  .suero-item p {
+    font-size: 0.72rem;
+    color: var(--taupe);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    background: linear-gradient(135deg, #2E2928 0%, #3D2B27 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,123,110,0.15) 0%, transparent 70%);
+    top: -200px;
+    right: -100px;
+  }
+
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 70%);
+    bottom: -150px;
+    left: -50px;
+  }
+
+  .cta-section .section-inner { position: relative; z-index: 2; }
+  .cta-section .eyebrow { color: var(--gold-light); }
+  .cta-section h2 { color: white; margin: 0.8rem 0 1.2rem; }
+  .cta-section p { color: rgba(255,255,255,0.65); font-size: 1rem; max-width: 500px; margin: 0 auto 2.5rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.55);
+    padding: 3rem 0 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    height: 60px;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--rose); }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+    z-index: 1001;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--charcoal);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero {
+      min-height: 100svh;
+    }
+    .hero-carousel .gallery-img {
+      filter: blur(3px) brightness(0.82) saturate(1.1);
+    }
+    .hero-carousel::after {
+      background:
+        linear-gradient(180deg,
+          rgba(46,41,40,0.10) 0%,
+          rgba(46,41,40,0.55) 50%,
+          rgba(46,41,40,0.78) 100%);
+    }
+    .hero-content {
+      max-width: 100%;
+      align-self: flex-end;
+      padding-bottom: 5rem;
+    }
+    .hero-carousel .gallery-dots {
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .hero-scroll { display: none; }
+
+    .about-grid { grid-template-columns: 1fr; }
+    .about-img-wrap { max-width: 400px; margin: 0 auto; aspect-ratio: 3/4; }
+
+    .menu-cols { grid-template-columns: 1fr; }
+    .treatment-grid { grid-template-columns: 1fr; }
+
+    /* Nav hamburger visible */
+    .nav-hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(250,247,244,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem;
+      gap: 1.5rem;
+      border-bottom: 1px solid rgba(201,123,110,0.15);
+      box-shadow: 0 8px 32px rgba(46,41,40,0.1);
+      z-index: 998;
+      animation: slideDown 0.3s ease forwards;
+    }
+
+    .nav-links.mobile-open { display: flex; }
+
+    .nav-links li { width: 100%; text-align: center; }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      display: block;
+      padding: 0.5rem 0;
+    }
+
+    .nav-cta {
+      display: inline-flex !important;
+      width: auto !important;
+      padding: 10px 28px !important;
+    }
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MOBILE PHONES ── */
+  @media (max-width: 480px) {
+    h1 { font-size: clamp(2rem, 10vw, 2.8rem); }
+    h2 { font-size: clamp(1.6rem, 7vw, 2rem); }
+    h3 { font-size: 1.3rem; }
+
+    .hero {
+      min-height: 100svh;
+      height: auto;
+    }
+    .hero-carousel .gallery-img {
+      filter: blur(2px) brightness(0.85) saturate(1.1);
+    }
+    .hero-carousel::after {
+      background:
+        linear-gradient(180deg,
+          rgba(46,41,40,0.05) 0%,
+          rgba(46,41,40,0.55) 55%,
+          rgba(46,41,40,0.85) 100%);
+    }
+    .hero-content {
+      padding: 1.8rem 1.2rem 4.5rem;
+      align-self: stretch;
+    }
+    .hero-carousel .gallery-dots {
+      bottom: 0.8rem;
+      padding: 3px 8px;
+      gap: 5px;
+    }
+    .hero-carousel .gallery-dot {
+      width: 6px;
+      height: 6px;
+    }
+    .hero-carousel .gallery-dot.active {
+      width: 18px;
+    }
+
+    .hero-subtitle { font-size: 0.92rem; max-width: 380px; }
+
+    .hero-badges {
+      gap: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.62rem;
+      padding: 5px 10px;
+    }
+
+    .hero-btns {
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .btn {
+      justify-content: center;
+      width: 100%;
+      padding: 13px 24px;
+    }
+
+    .section-inner {
+      padding: 0 1rem;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .about {
+      padding: 3rem 0;
+    }
+
+    .about-img-wrap { max-width: 100%; aspect-ratio: 4/5; }
+
+    .stats-row {
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+    }
+
+    .stat-item { min-width: 42%; }
+
+    .stat-number { font-size: 2rem; }
+
+    .menu-section {
+      padding: 3rem 0;
+    }
+
+    .menu-col-header {
+      padding: 1rem 1.2rem;
+      font-size: 0.65rem;
+    }
+
+    .menu-item {
+      padding: 0.8rem 1.2rem;
+    }
+
+    .menu-item:hover { padding-left: 1.6rem; }
+
+    .menu-item-name { font-size: 0.82rem; }
+
+    .menu-item-price { font-size: 1rem; }
+
+    .treatments {
+      padding: 3rem 0;
+    }
+
+    .treatment-grid {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .card-img { height: 200px; }
+
+    .card-body { padding: 1.2rem; }
+
+    .card-body h3 { font-size: 1.2rem; }
+
+    .suero-header { padding: 1.5rem 1.2rem; }
+
+    .suero-header h3 { font-size: 1.5rem; }
+
+    .suero-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-section {
+      padding: 3rem 0;
+    }
+
+    .cta-section h2 { font-size: 1.8rem; }
+
+    .cta-section p { font-size: 0.9rem; }
+
+    [style*="display:flex; gap:1rem; justify-content:center"] {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-logo { height: 50px; }
+
+    .footer-tagline { font-size: 0.95rem; }
+
+    .footer-links { gap: 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  /* ── GALLERY (carrusel en tarjeta) ── */
+  .gallery {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .gallery-track {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .gallery-img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .gallery-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 3;
+    padding: 4px 10px;
+    background: rgba(46,41,40,0.35);
+    backdrop-filter: blur(6px);
+    border-radius: 100px;
+  }
+
+  .gallery-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .gallery-dot.active {
+    background: var(--blush);
+    width: 22px;
+    border-radius: 100px;
+  }
+
+  .gallery-dot:hover { background: rgba(255,255,255,0.8); }
+
+  /* Contador "01 / 05" sobre tarjeta */
+  .gallery-counter {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(46,41,40,0.55);
+    color: white;
+    backdrop-filter: blur(8px);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    z-index: 3;
+  }
+
+  .gallery-counter strong { color: var(--blush); }
+
+  /* ── HERO CAROUSEL (carrusel difuminado a pantalla completa) ── */
+  .hero-carousel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-carousel .gallery-track {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-carousel .gallery-img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: blur(5px) brightness(0.78) saturate(1.1);
+    transform: scale(1.08);
+    animation: heroKenBurns 18s ease-in-out infinite alternate;
+    will-change: transform, filter;
+  }
+
+  @keyframes heroKenBurns {
+    from { transform: scale(1.08) translate(0,0); }
+    to   { transform: scale(1.18) translate(-1.5%, -1%); }
+  }
+
+  /* Viñeta lateral solo donde va el texto */
+  .hero-carousel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg,
+        rgba(46,41,40,0.55) 0%,
+        rgba(46,41,40,0.25) 45%,
+        rgba(46,41,40,0.05) 100%),
+      linear-gradient(180deg,
+        rgba(46,41,40,0.10) 0%,
+        rgba(46,41,40,0.45) 100%);
+    pointer-events: none;
+  }
+
+  /* Dots posicionados sobre el hero */
+  .hero-carousel .gallery-dots {
+    bottom: 2rem;
+    left: clamp(1.5rem, 6vw, 5rem);
+    transform: none;
+    background: rgba(46,41,40,0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .hero-carousel .gallery-dot {
+    background: rgba(255,255,255,0.55);
+  }
+  .hero-carousel .gallery-dot.active {
+    background: var(--blush);
+  }
+  .hero-carousel .gallery-dot:hover { background: rgba(255,255,255,0.9); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-logo">
+    <img src="img/Portada.jpg" alt="Sofía Marín Centro Estético logo">
+    <span class="nav-name">Sofía Marín</span>
+  </a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#sobre" class="nav-close-link">Sobre mí</a></li>
+    <li><a href="#menu" class="nav-close-link">Servicios</a></li>
+    <li><a href="#faciales" class="nav-close-link">Faciales</a></li>
+    <li><a href="#corporales" class="nav-close-link">Corporales</a></li>
+    <li><a href="#contacto" class="nav-cta nav-close-link">Reservar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-carousel gallery" data-count="6">
+    <div class="gallery-track">
+      <img class="gallery-img" src="img/Portada3.jpg" alt="">
+      <img class="gallery-img" src="img/Portada6.jpg" alt="">
+      <img class="gallery-img" src="img/Portada8.jpg" alt="">
+      <img class="gallery-img" src="img/Portada10.jpg" alt="">
+      <img class="gallery-img" src="img/Portada2.jpg" alt="">
+      <img class="gallery-img" src="img/Portada9.jpg" alt="">
+    </div>
+    <div class="gallery-dots">
+      <button class="gallery-dot active" data-idx="0" aria-label="Imagen 1"></button>
+      <button class="gallery-dot" data-idx="1" aria-label="Imagen 2"></button>
+      <button class="gallery-dot" data-idx="2" aria-label="Imagen 3"></button>
+      <button class="gallery-dot" data-idx="3" aria-label="Imagen 4"></button>
+      <button class="gallery-dot" data-idx="4" aria-label="Imagen 5"></button>
+      <button class="gallery-dot" data-idx="5" aria-label="Imagen 6"></button>
+    </div>
+  </div>
+  <div class="hero-content">
+    <span class="eyebrow">Centro Estético · Medellín</span>
+    <h1>Tu piel merece lo <em>mejor.</em></h1>
+    <p class="hero-subtitle">Tratamientos faciales y corporales de alto nivel, con tecnología avanzada y el cuidado personalizado que tu piel necesita para brillar.</p>
+    <div class="hero-badges">
+      <span class="badge">✦ Faciales</span>
+      <span class="badge">✦ Corporales</span>
+      <span class="badge">✦ Tecnología RF</span>
+      <span class="badge">✦ PRP · Dermapen</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#menu" class="btn btn-primary">Ver todos los servicios</a>
+      <a href="#sobre" class="btn btn-outline">Conocer más</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Explorar</div>
+</section>
+
+<!-- ABOUT -->
+<section id="sobre" class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="img/Portada2.jpg" alt="Sofía Marín, esteticista certificada">
+        <div class="cert-badge">
+          <span class="eyebrow">Certificada</span>
+          <p>Esteticista Integral Profesional</p>
+        </div>
+      </div>
+      <div class="about-content">
+        <span class="eyebrow">Sobre nosotros</span>
+        <h2>Más que un centro estético, es un ritual de bienestar.</h2>
+        <p>En Sofía Marín Centro Estético creemos que cuidarte no es un lujo, es una necesidad. Cada tratamiento está diseñado con criterio clínico y un toque de delicadeza para que salgas no solo viéndote increíble, sino sintiéndote completamente renovada.</p>
+        <p>Trabajamos con equipos de última generación —radiofrecuencia, dermapen, plasma rico en plaquetas, terapia LED— y los mejores principios activos del mercado. Cada sesión comienza con una valoración personalizada de tu piel, porque no hay dos pieles iguales.</p>
+        <p>Tu confort, tu privacidad y tus resultados son nuestra prioridad absoluta.</p>
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-number">13+</span>
+            <span class="stat-label">Tratamientos Faciales</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Tratamientos Corporales</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Personalizado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU / ÍNDICE -->
+<section id="menu" class="menu-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow">Portafolio de servicios</span>
+      <h2>Encuentra tu tratamiento ideal</h2>
+      <p>Un vistazo completo a todo lo que ofrecemos. Cada precio incluye el protocolo completo del servicio.</p>
+      <span class="divider"></span>
+    </div>
+    <div class="menu-cols">
+      <div>
+        <div class="menu-col-header facial">
+          <span>✦</span> Tratamientos Faciales
+        </div>
+        <div class="menu-list">
+          <a href="#t-dermaplaning" class="menu-item">
+            <span class="menu-item-name">Dermaplaning Facial</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$50.000</span>
+          </a>
+          <a href="#t-porcelanizacion" class="menu-item">
+            <span class="menu-item-name">Porcelanización Facial</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$130.000</span>
+          </a>
+          <a href="#t-limpieza-profunda" class="menu-item">
+            <span class="menu-item-name">Limpieza Facial Profunda</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$100.000</span>
+          </a>
+          <a href="#t-hydralift" class="menu-item">
+            <span class="menu-item-name">Facial Hydralift con Radiofrecuencia</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$170.000</span>
+          </a>
+          <a href="#t-antiacne" class="menu-item">
+            <span class="menu-item-name">Facial Antiacné</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$120.000</span>
+          </a>
+          <a href="#t-prp" class="menu-item">
+            <span class="menu-item-name">PRP + Limpieza Facial Profunda</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$160.000</span>
+          </a>
+          <a href="#t-limpieza-premium" class="menu-item">
+            <span class="menu-item-name">Limpieza Facial Premium</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$140.000</span>
+          </a>
+          <a href="#t-dermapen" class="menu-item">
+            <span class="menu-item-name">Dermapen + Limpieza Profunda</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$150.000</span>
+          </a>
+          <a href="#t-peeling" class="menu-item">
+            <span class="menu-item-name">Peeling Facial</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$80.000</span>
+          </a>
+          <a href="#t-hidratacion" class="menu-item">
+            <span class="menu-item-name">Limpieza Profunda + Alta Hidratación</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$100.000</span>
+          </a>
+          <a href="#t-hidralips" class="menu-item">
+            <span class="menu-item-name">Hidratación de Labios con Ácido Hialurónico</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$100.000</span>
+          </a>
+          <a href="#t-pdrn" class="menu-item">
+            <span class="menu-item-name">PDRN Esperma de Salmón</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$300.000</span>
+          </a>
+          <a href="#t-plasma-capilar" class="menu-item">
+            <span class="menu-item-name">Plasma Capilar (Alopecia)</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$320.000</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="menu-col-header corporal">
+          <span>✦</span> Tratamientos Corporales
+        </div>
+        <div class="menu-list">
+          <a href="#t-masaje-relajacion" class="menu-item">
+            <span class="menu-item-name">Masaje de Relajación</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$110.000</span>
+          </a>
+          <a href="#t-masaje-moldeo" class="menu-item">
+            <span class="menu-item-name">Masajes de Moldeo</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$150.000</span>
+          </a>
+          <a href="#t-quemadores" class="menu-item">
+            <span class="menu-item-name">Masajes de Reducción (Quemadores)</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$450.000</span>
+          </a>
+          <a href="#t-gluteos" class="menu-item">
+            <span class="menu-item-name">Levantamiento de Glúteos</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$280.000 x4</span>
+          </a>
+          <a href="#t-anticelulitis" class="menu-item">
+            <span class="menu-item-name">Tratamiento Anticelulitis</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$180.000 x4</span>
+          </a>
+          <a href="#t-hidrolipoclasia" class="menu-item">
+            <span class="menu-item-name">Hidrolipoclasia</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$480.000</span>
+          </a>
+          <a href="#t-despigmentacion" class="menu-item">
+            <span class="menu-item-name">Despigmentación de Axilas</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">$280.000 x4</span>
+          </a>
+          <a href="#t-sueroterapia" class="menu-item">
+            <span class="menu-item-name">Sueroterapia</span>
+            <span class="menu-dot"></span>
+            <span class="menu-item-price">Desde $80.000</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACIALES -->
+<section id="faciales" class="treatments treatments-facial">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-category-label label-facial">✦ Tratamientos Faciales</span>
+      <h2>Rituales para tu piel</h2>
+      <p>Cada facial comienza con una valoración personalizada. Trabajamos con tu tipo de piel, no contra él.</p>
+      <span class="divider"></span>
+    </div>
+    <div class="treatment-grid">
+
+      <div class="treatment-card" id="t-dermaplaning">
+        <div class="card-img">
+            <div class="gallery" data-count="2">
+            <div class="gallery-track">
+              <img class="gallery-img" src="img/Dermaplaning Facial.jpg" alt="">
+              <img class="gallery-img" src="img/Dermaplaning Facial2.jpg" alt="">
+            </div>
+            <div class="gallery-counter"><strong>01</strong> / 02</div>
+            <div class="gallery-dots">
+              <button class="gallery-dot active" data-idx="0" aria-label="Imagen 1"></button>
+              <button class="gallery-dot" data-idx="1" aria-label="Imagen 2"></button>
+            </div>
+          </div>
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$50.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Dermaplaning Facial</h3>
+          <p class="tagline">Piel suave como seda desde la primera sesión.</p>
+          <p>Con un bisturí quirúrgico de precisión eliminamos el vello facial fino (pelusilla) y las células muertas acumuladas, revelando una piel increíblemente lisa, luminosa y lista para absorber mejor cualquier cosmético.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Higienización con leche limpiadora y jabón espumoso</li>
+              <li><span class="step-num">02</span> Dermaplaning con bisturí quirúrgico</li>
+              <li><span class="step-num">03</span> Mascarilla hidratante calmante</li>
+              <li><span class="step-num">04</span> Crema hidratante nutritiva</li>
+              <li><span class="step-num">05</span> Protector solar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-porcelanizacion">
+        <div class="card-img">
+            <img src="img/2c51136e-df1e-4278-8f88-50a333cd3faf.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$130.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Porcelanización Facial</h3>
+          <p class="tagline">Luminosidad intensa y efecto piel porcelana.</p>
+          <p>Tratamiento multietapa que unifica el tono, hidrata en profundidad y logra ese acabado de piel perfecta que tanto buscas. Ideal para pieles opacas, con manchas leves o tono irregular.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración cutánea</li>
+              <li><span class="step-num">02</span> Higienización de la piel</li>
+              <li><span class="step-num">03</span> Exfoliación</li>
+              <li><span class="step-num">04-05</span> Aplicación de ácido + neutralizante (doble ciclo)</li>
+              <li><span class="step-num">06</span> Gel desincrustante</li>
+              <li><span class="step-num">07</span> Vapor de ozono</li>
+              <li><span class="step-num">08</span> Extracción de comedones</li>
+              <li><span class="step-num">09</span> Alta frecuencia</li>
+              <li><span class="step-num">10</span> Gel calmante de hamamelis + crioterapia</li>
+              <li><span class="step-num">11</span> Mascarilla blanca + terapia LED</li>
+              <li><span class="step-num">12</span> Crema hidratante, contorno de ojos y protector solar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-limpieza-profunda">
+        <div class="card-img">
+            <div class="gallery" data-count="4">
+            <div class="gallery-track">
+              <img class="gallery-img" src="img/Limpieza Facial Profunda.jpg" alt="">
+              <img class="gallery-img" src="img/Limpieza Facial Profunda2.jpg" alt="">
+              <img class="gallery-img" src="img/Limpieza Facial Profunda3.jpg" alt="">
+              <img class="gallery-img" src="img/Limpieza Facial Profunda4.jpg" alt="">
+            </div>
+            <div class="gallery-counter"><strong>01</strong> / 04</div>
+            <div class="gallery-dots">
+              <button class="gallery-dot active" data-idx="0" aria-label="Imagen 1"></button>
+              <button class="gallery-dot" data-idx="1" aria-label="Imagen 2"></button>
+              <button class="gallery-dot" data-idx="2" aria-label="Imagen 3"></button>
+              <button class="gallery-dot" data-idx="3" aria-label="Imagen 4"></button>
+            </div>
+          </div>
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$100.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Limpieza Facial Profunda</h3>
+          <p class="tagline">Poros limpios, piel equilibrada y luminosa.</p>
+          <p>Protocolo completo que desobstruye los poros, controla el exceso de grasa y deja la textura notoriamente más uniforme. Perfecta como mantenimiento mensual o punto de partida para cualquier tratamiento.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración cutánea</li>
+              <li><span class="step-num">02</span> Higienización de la piel</li>
+              <li><span class="step-num">03</span> Exfoliación para remover células muertas</li>
+              <li><span class="step-num">04</span> Microdermoabrasión (renovación celular)</li>
+              <li><span class="step-num">05</span> Gel desincrustante</li>
+              <li><span class="step-num">06</span> Vapor de ozono para dilatación de poros</li>
+              <li><span class="step-num">07</span> Peeling ultrasónico</li>
+              <li><span class="step-num">08</span> Extracción de comedones e impurezas</li>
+              <li><span class="step-num">09</span> Alta frecuencia (efecto bactericida y calmante)</li>
+              <li><span class="step-num">10</span> Gel calmante + crioterapia</li>
+              <li><span class="step-num">11</span> Mascarilla según tu piel + terapia LED</li>
+              <li><span class="step-num">12</span> Tónico, crema hidratante, contorno y protector</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-hydralift">
+        <div class="card-img">
+            <img src="img/Facial Hydralift con RF.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$170.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Facial Hydralift con RF</h3>
+          <p class="tagline">Firmeza, hidratación y rejuvenecimiento en una sola sesión.</p>
+          <p>Nuestro tratamiento estrella combina limpieza profunda, dermaplaning y radiofrecuencia facial. La RF calienta las capas profundas de la piel, estimulando la producción de colágeno para un efecto tensor y lifting visible desde la primera sesión.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Higienización</li>
+              <li><span class="step-num">02</span> Exfoliación</li>
+              <li><span class="step-num">03</span> Dermaplaning (eliminación de vello facial)</li>
+              <li><span class="step-num">04</span> Microdermoabrasión</li>
+              <li><span class="step-num">05</span> Vapor de ozono</li>
+              <li><span class="step-num">06</span> Extracción de comedones</li>
+              <li><span class="step-num">07</span> Alta frecuencia</li>
+              <li><span class="step-num">08</span> Radiofrecuencia + principio activo hidratante y reafirmante</li>
+              <li><span class="step-num">09</span> Mascarilla hidro jelly</li>
+              <li><span class="step-num">10</span> Fototerapia LED</li>
+              <li><span class="step-num">11</span> Tónico + crema + protector solar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-antiacne">
+        <div class="card-img">
+            <img src="img/Facial Antiacné.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$120.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Facial Antiacné</h3>
+          <p class="tagline">Control activo para pieles con tendencia acneica.</p>
+          <p>Protocolo especializado que combina limpieza profunda, extracción controlada, alta frecuencia con efecto bactericida y principios activos reguladores de la producción de sebo. Reduce la inflamación, mejora la textura y previene nuevas erupciones.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración cutánea y análisis del tipo de acné</li>
+              <li><span class="step-num">02</span> Higienización con limpiador purificante</li>
+              <li><span class="step-num">03</span> Exfoliación suave enzimática</li>
+              <li><span class="step-num">04</span> Vapor de ozono para abrir poros</li>
+              <li><span class="step-num">05</span> Extracción controlada de comedones y lesiones</li>
+              <li><span class="step-num">06</span> Alta frecuencia (efecto bactericida y cicatrizante)</li>
+              <li><span class="step-num">07</span> Aplicación de principios activos: ácido salicílico, niacinamida</li>
+              <li><span class="step-num">08</span> Mascarilla reguladora de sebo</li>
+              <li><span class="step-num">09</span> Terapia con luz LED azul (antibacteriana)</li>
+              <li><span class="step-num">10</span> Crema sin aceite + protector solar no comedogénico</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-prp">
+        <div class="card-img">
+            <img src="img/PRP + Limpieza Facial.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$160.000</span>
+          </div>
+        <div class="card-body">
+          <h3>PRP + Limpieza Facial</h3>
+          <p class="tagline">Bioestimulación con los factores de crecimiento de tu propia piel.</p>
+          <p>El plasma rico en plaquetas es uno de los tratamientos más potentes para regenerar la piel desde adentro. Combinado con una limpieza profunda, estimula colágeno y elastina para una piel más firme, hidratada y rejuvenecida.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración cutánea</li>
+              <li><span class="step-num">02</span> Higienización</li>
+              <li><span class="step-num">03</span> Exfoliación + microdermoabrasión</li>
+              <li><span class="step-num">04</span> Gel desincrustante + vapor de ozono</li>
+              <li><span class="step-num">05</span> Extracción de comedones</li>
+              <li><span class="step-num">06</span> Alta frecuencia</li>
+              <li><span class="step-num">07</span> Tónico (equilibrar pH)</li>
+              <li><span class="step-num">08</span> Mascarilla según tu piel</li>
+              <li><span class="step-num">09</span> Aplicación de plasma activado mediante mesoterapia</li>
+              <li><span class="step-num">10</span> Fototerapia LED</li>
+              <li><span class="step-num">11</span> Crioterapia — efecto calmante y sellante de activos</li>
+              <li><span class="step-num">12</span> Protector solar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-limpieza-premium">
+        <div class="card-img">
+            <div class="gallery" data-count="5">
+            <div class="gallery-track">
+              <img class="gallery-img" src="img/Limpieza Facial Premium.jpg" alt="">
+              <img class="gallery-img" src="img/Limpieza Facial Premium2.jpg" alt="">
+              <img class="gallery-img" src="img/Limpieza Facial Premium3.jpg" alt="">
+              <img class="gallery-img" src="img/Limpieza Facial Premium4.jpg" alt="">
+              <img class="gallery-img" src="img/Limpieza Facial Premium5.jpg" alt="">
+            </div>
+            <div class="gallery-counter"><strong>01</strong> / 05</div>
+            <div class="gallery-dots">
+              <button class="gallery-dot active" data-idx="0" aria-label="Imagen 1"></button>
+              <button class="gallery-dot" data-idx="1" aria-label="Imagen 2"></button>
+              <button class="gallery-dot" data-idx="2" aria-label="Imagen 3"></button>
+              <button class="gallery-dot" data-idx="3" aria-label="Imagen 4"></button>
+              <button class="gallery-dot" data-idx="4" aria-label="Imagen 5"></button>
+            </div>
+          </div>
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$140.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Limpieza Facial Premium</h3>
+          <p class="tagline">La limpieza más completa que tu piel puede recibir.</p>
+          <p>Tratamiento integral que combina dermaplaning, limpieza profunda, hidratación intensa y terapia LED en un solo protocolo. Mejora la textura, la luminosidad y la apariencia general de la piel de forma visible.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración cutánea</li>
+              <li><span class="step-num">02</span> Higienización de la piel</li>
+              <li><span class="step-num">03</span> Dermaplaning (eliminación de vello facial)</li>
+              <li><span class="step-num">04</span> Exfoliación + microdermoabrasión</li>
+              <li><span class="step-num">05</span> Gel desincrustante</li>
+              <li><span class="step-num">06</span> Vapor de ozono + peeling ultrasónico</li>
+              <li><span class="step-num">07</span> Extracción de comedones</li>
+              <li><span class="step-num">08</span> Alta frecuencia</li>
+              <li><span class="step-num">09</span> Gel calmante + crioterapia</li>
+              <li><span class="step-num">10</span> Mascarilla hidro jelly + fototerapia LED</li>
+              <li><span class="step-num">11</span> Tónico, crema, contorno de ojos, protector solar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-dermapen">
+        <div class="card-img">
+            <img src="img/88d5e0dd-d608-4093-a55b-d099d15ac947.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$150.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Dermapen + Limpieza</h3>
+          <p class="tagline">Resultados visibles desde la primera sesión. Glow real.</p>
+          <p>El dermapen crea microcanales en la piel que potencian la absorción de principios activos y estimulan la producción natural de colágeno. Combinado con limpieza profunda, la piel queda renovada, luminosa y con un efecto glow inmediato.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración cutánea</li>
+              <li><span class="step-num">02</span> Higienización</li>
+              <li><span class="step-num">03</span> Exfoliación + microdermoabrasión</li>
+              <li><span class="step-num">04</span> Gel desincrustante + vapor de ozono</li>
+              <li><span class="step-num">05</span> Extracción manual de comedones</li>
+              <li><span class="step-num">06</span> Alta frecuencia</li>
+              <li><span class="step-num">07</span> Aplicación de principio activo con dermapen</li>
+              <li><span class="step-num">08</span> Gel calmante de hamamelis + crioterapia</li>
+              <li><span class="step-num">09</span> Mascarilla + terapia LED</li>
+              <li><span class="step-num">10</span> Tónico, crema, contorno de ojos, protector solar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-peeling">
+        <div class="card-img">
+            <img src="img/Peeling Facial.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$80.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Peeling Facial</h3>
+          <p class="tagline">Renovación celular acelerada para una piel más joven.</p>
+          <p>El peeling químico elimina las capas más superficiales de células muertas y estimula la regeneración celular, reduciendo manchas, líneas finas y textura irregular. El resultado: una piel notoriamente más fresca y uniforme.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración cutánea e historial de sensibilidad</li>
+              <li><span class="step-num">02</span> Higienización y desgrasado de la piel</li>
+              <li><span class="step-num">03</span> Aplicación del agente peeling según tipo de piel</li>
+              <li><span class="step-num">04</span> Tiempo de actuación controlado</li>
+              <li><span class="step-num">05</span> Neutralización</li>
+              <li><span class="step-num">06</span> Aplicación de sérum calmante y reparador</li>
+              <li><span class="step-num">07</span> Mascarilla post-peeling</li>
+              <li><span class="step-num">08</span> Crema barrera + protector solar SPF 50+</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-hidratacion">
+        <div class="card-img">
+            <img src="img/Limpieza Profunda + Alta Hidratación.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$100.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Limpieza Profunda + Alta Hidratación</h3>
+          <p class="tagline">Piel limpia e hidratada en un solo paso.</p>
+          <p>La combinación perfecta para pieles deshidratadas que también necesitan limpieza. Después de desobstruir los poros en profundidad, aplicamos un protocolo de hidratación intensiva con principios activos que devuelven el volumen y la luminosidad a tu piel.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración cutánea</li>
+              <li><span class="step-num">02</span> Higienización doble</li>
+              <li><span class="step-num">03</span> Exfoliación suave</li>
+              <li><span class="step-num">04</span> Vapor de ozono + extracción de comedones</li>
+              <li><span class="step-num">05</span> Alta frecuencia</li>
+              <li><span class="step-num">06</span> Mesoterapia con ácido hialurónico y vitaminas</li>
+              <li><span class="step-num">07</span> Mascarilla ultra hidratante de alginato</li>
+              <li><span class="step-num">08</span> Terapia LED roja (regeneradora)</li>
+              <li><span class="step-num">09</span> Sérum, crema nutritiva y protector solar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-hidralips">
+        <div class="card-img">
+            <img src="img/Hidratación de Labios.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$100.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Hidratación de Labios</h3>
+          <p class="tagline">Labios definidos, hidratados y naturalmente voluminosos.</p>
+          <p>Aplicación de ácido hialurónico no reticulado en labios mediante mesoterapia superficial. Hidrata desde adentro, mejora la definición del contorno labial y devuelve ese turgente natural sin el aspecto exagerado de los rellenos.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Limpieza e higienización de la zona labial</li>
+              <li><span class="step-num">02</span> Aplicación de crema anestésica tópica</li>
+              <li><span class="step-num">03</span> Tiempo de espera (20 min)</li>
+              <li><span class="step-num">04</span> Inyección de ácido hialurónico no reticulado</li>
+              <li><span class="step-num">05</span> Masaje de distribución</li>
+              <li><span class="step-num">06</span> Crioterapia para reducir inflamación</li>
+              <li><span class="step-num">07</span> Bálsamo labial nutritivo</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-pdrn">
+        <div class="card-img">
+            <img src="img/PDRN – Esperma de Salmón.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$300.000</span>
+          </div>
+        <div class="card-body">
+          <h3>PDRN – Esperma de Salmón</h3>
+          <p class="tagline">Regeneración celular profunda de última generación.</p>
+          <p>El PDRN (ácido polidesoxirribonucleótido) derivado del salmón es uno de los activos más avanzados en medicina estética. Estimula la regeneración tisular, mejora la elasticidad, reduce manchas y rejuvenece la piel desde sus capas más profundas.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración cutánea y consentimiento</li>
+              <li><span class="step-num">02</span> Higienización y preparación de la piel</li>
+              <li><span class="step-num">03</span> Aplicación de crema anestésica</li>
+              <li><span class="step-num">04</span> Microinyecciones de PDRN en puntos estratégicos</li>
+              <li><span class="step-num">05</span> Masaje de absorción</li>
+              <li><span class="step-num">06</span> Terapia LED para potenciar la regeneración</li>
+              <li><span class="step-num">07</span> Mascarilla calmante post-procedimiento</li>
+              <li><span class="step-num">08</span> Crema reparadora + protector solar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-plasma-capilar">
+        <div class="card-img">
+            <img src="img/Portada10.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$320.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Plasma Capilar (Alopecia)</h3>
+          <p class="tagline">Revitaliza el cuero cabelludo y estimula el crecimiento capilar.</p>
+          <p>Tratamiento con plasma rico en plaquetas aplicado directamente en el cuero cabelludo para estimular los folículos capilares dormidos. Ideal para alopecia androgenética, caída difusa o cabello debilitado. Resultados progresivos y duraderos.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración capilar y tricológica</li>
+              <li><span class="step-num">02</span> Limpieza del cuero cabelludo</li>
+              <li><span class="step-num">03</span> Preparación del plasma rico en plaquetas</li>
+              <li><span class="step-num">04</span> Microinyecciones de PRP en cuero cabelludo</li>
+              <li><span class="step-num">05</span> Masaje de distribución</li>
+              <li><span class="step-num">06</span> Terapia LED para potenciar la respuesta</li>
+              <li><span class="step-num">07</span> Indicaciones de cuidado post-sesión</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end treatment-grid facial -->
+  </div>
+</section>
+
+<!-- CORPORALES -->
+<section id="corporales" class="treatments treatments-corporal">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-category-label label-corporal">✦ Tratamientos Corporales</span>
+      <h2>Cuida tu cuerpo, celebra tu figura</h2>
+      <p>Desde relajación profunda hasta modelado corporal y tratamientos especializados. Tu bienestar, de pies a cabeza.</p>
+      <span class="divider"></span>
+    </div>
+    <div class="treatment-grid">
+
+      <div class="treatment-card" id="t-masaje-relajacion">
+        <div class="card-img">
+            <img src="img/Masaje de Relajación.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$110.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Masaje de Relajación</h3>
+          <p class="tagline">60 minutos de pausa completa. Tu cuerpo lo necesita.</p>
+          <p>Sesión de masaje relajante integral que combina técnicas manuales, aromaterapia y musicoterapia para reducir el estrés, aliviar la tensión muscular y activar la circulación. Incluye exfoliación de pies como cortesía.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Aromaterapia</li>
+              <li><span class="step-num">02</span> Musicoterapia (ambiente relajante)</li>
+              <li><span class="step-num">03</span> Aromática de bienvenida</li>
+              <li><span class="step-num">04</span> Masaje manual relajante (60 min)</li>
+              <li><span class="step-num">05</span> Terapia con piedras volcánicas calientes</li>
+              <li><span class="step-num">06</span> Masaje con guasha</li>
+              <li><span class="step-num">07</span> Masajeador percusivo</li>
+              <li><span class="step-num">08</span> Exfoliación de pies (cortesía)</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-masaje-moldeo">
+        <div class="card-img">
+            <img src="img/Portada11.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$150.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Masajes de Moldeo</h3>
+          <p class="tagline">Define tu silueta y activa la circulación linfática.</p>
+          <p>Técnica de masaje modelador que trabaja en zonas específicas del cuerpo para definir la silueta, activar el drenaje linfático y mejorar la tonicidad de la piel. Resultados progresivos y visibles en el contorno corporal.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración de zonas a tratar</li>
+              <li><span class="step-num">02</span> Aplicación de aceite o crema moldeadora</li>
+              <li><span class="step-num">03</span> Masaje manual con técnicas de moldeo</li>
+              <li><span class="step-num">04</span> Drenaje linfático en la zona trabajada</li>
+              <li><span class="step-num">05</span> Vendaje o faja modeladora (opcional)</li>
+              <li><span class="step-num">06</span> Indicaciones de cuidado posterior</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-quemadores">
+        <div class="card-img">
+            <img src="img/Masajes de Reducción.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$450.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Masajes de Reducción</h3>
+          <p class="tagline">Combo Quemadores de Grasa — resultados reales.</p>
+          <p>Protocolo intensivo de reducción corporal que combina técnicas de masaje profundo con activos termogénicos para acelerar la quema de grasa localizada, reducir el volumen en zonas específicas y mejorar la textura de la piel.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración de zonas con acumulación de grasa</li>
+              <li><span class="step-num">02</span> Aplicación de crema termogénica quemadora</li>
+              <li><span class="step-num">03</span> Masaje reductor profundo (técnica endermológica manual)</li>
+              <li><span class="step-num">04</span> Uso de tecnología de cavitación o presoterapia</li>
+              <li><span class="step-num">05</span> Vendaje reductor con activos termogénicos</li>
+              <li><span class="step-num">06</span> Indicaciones nutricionales y de hidratación</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-gluteos">
+        <div class="card-img">
+            <img src="img/Levantamiento de Glúteos.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$280.000 × 4</span>
+          </div>
+        <div class="card-body">
+          <h3>Levantamiento de Glúteos</h3>
+          <p class="tagline">Reafirma, eleva y define. Sin cirugía.</p>
+          <p>Protocolo de 4 sesiones que combina masajes de lifting, electroestimulación y principios activos reafirmantes para elevar, tonificar y dar volumen a la zona glútea. Resultados progresivos con efecto acumulativo por sesión.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración inicial y fotografía de control</li>
+              <li><span class="step-num">02</span> Aplicación de crema reafirmante y tensora</li>
+              <li><span class="step-num">03</span> Masaje de lifting con maniobras específicas</li>
+              <li><span class="step-num">04</span> Electroestimulación muscular (EMS) 20 min</li>
+              <li><span class="step-num">05</span> Drenaje linfático de la zona</li>
+              <li><span class="step-num">06</span> Vendaje tensor post-sesión</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-anticelulitis">
+        <div class="card-img">
+            <img src="img/Protocolo Anticelulitis.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$180.000 × 4</span>
+          </div>
+        <div class="card-body">
+          <h3>Protocolo Anticelulitis</h3>
+          <p class="tagline">Ataca la celulitis desde adentro, en 4 sesiones.</p>
+          <p>Protocolo intensivo de 4 sesiones que combina masajes de drenaje, principios activos lipolíticos y tratamientos de ondas para reducir la apariencia de la piel de naranja, mejorar la circulación y suavizar la textura cutánea.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Diagnóstico del grado de celulitis</li>
+              <li><span class="step-num">02</span> Exfoliación corporal activadora</li>
+              <li><span class="step-num">03</span> Aplicación de crema anticelulítica</li>
+              <li><span class="step-num">04</span> Masaje de drenaje linfático</li>
+              <li><span class="step-num">05</span> Ondas de choque o vacumterapia</li>
+              <li><span class="step-num">06</span> Envoltorio activo con algas o barro</li>
+              <li><span class="step-num">07</span> Crema reafirmante final</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-hidrolipoclasia">
+        <div class="card-img">
+            <img src="img/Portada6.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$480.000</span>
+          </div>
+        <div class="card-body">
+          <h3>Hidrolipoclasia</h3>
+          <p class="tagline">Reducción localizada con microinyecciones.</p>
+          <p>Técnica médico-estética de reducción de grasa localizada mediante microinyecciones de solución salina que rompen los adipocitos para facilitar su eliminación natural. Ideal para abdomen, caderas y muslos con acumulación de grasa resistente.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración de zonas y consentimiento informado</li>
+              <li><span class="step-num">02</span> Higienización y asepsia de la zona</li>
+              <li><span class="step-num">03</span> Infiltración de solución hipotónica</li>
+              <li><span class="step-num">04</span> Ultrasonido sobre la zona infiltrada</li>
+              <li><span class="step-num">05</span> Masaje de drenaje linfático</li>
+              <li><span class="step-num">06</span> Vendaje compresivo post-procedimiento</li>
+              <li><span class="step-num">07</span> Indicaciones y cuidados posteriores</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="treatment-card" id="t-despigmentacion">
+        <div class="card-img">
+            <img src="img/Despigmentación de Axilas.jpg" alt="">
+            <div class="card-img-overlay"></div>
+            <span class="card-price-pill">$280.000 × 4</span>
+          </div>
+        <div class="card-body">
+          <h3>Despigmentación de Axilas</h3>
+          <p class="tagline">Uniformiza, aclara y renueva la piel de zonas oscuras.</p>
+          <p>Protocolo de 4 sesiones con ácidos específicos e iluminadores para aclarar progresivamente la hiperpigmentación de axilas, ingles y otras zonas de fricción. La piel se ve más uniforme, suave y libre de manchas oscuras.</p>
+          <button class="steps-toggle" onclick="toggleSteps(this)">
+            Ver protocolo completo <span class="arrow">▾</span>
+          </button>
+          <div class="steps-list">
+            <ol>
+              <li><span class="step-num">01</span> Valoración del tipo y grado de hiperpigmentación</li>
+              <li><span class="step-num">02</span> Limpieza e higienización de la zona</li>
+              <li><span class="step-num">03</span> Exfoliación con ácido kójico y glicólico</li>
+              <li><span class="step-num">04</span> Peeling despigmentante controlado</li>
+              <li><span class="step-num">05</span> Neutralización</li>
+              <li><span class="step-num">06</span> Aplicación de sérum iluminador</li>
+              <li><span class="step-num">07</span> Crema despigmentante + protector solar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end corporal grid -->
+
+    <!-- SUEROTERAPIA SPECIAL -->
+    <div class="suero-card" id="t-sueroterapia">
+      <div class="suero-header">
+        <span class="eyebrow" style="color:rgba(201,169,110,0.8)">Nutrición Intravenosa</span>
+        <h3>Sueroterapia</h3>
+        <p>Coctelería de vitaminas, minerales y antioxidantes directamente en tu flujo sanguíneo. Resultados inmediatos en energía, inmunidad e hidratación.</p>
+      </div>
+      <div class="suero-grid">
+        <div class="suero-item">
+          <h4>Suero Básico</h4>
+          <span class="price-tag">$80.000</span>
+          <p>Hidratación + electrolitos esenciales</p>
+        </div>
+        <div class="suero-item">
+          <h4>Suero Vitamina C</h4>
+          <span class="price-tag">$120.000</span>
+          <p>Antioxidante potente, inmunidad y luminosidad</p>
+        </div>
+        <div class="suero-item">
+          <h4>Suero Energizante</h4>
+          <span class="price-tag">$130.000</span>
+          <p>B12, magnesio y aminoácidos para vitalidad</p>
+        </div>
+        <div class="suero-item">
+          <h4>Suero Antienvejecimiento</h4>
+          <span class="price-tag">$180.000</span>
+          <p>Glutatión, vitaminas C y E, ácido alfa-lipoico</p>
+        </div>
+        <div class="suero-item">
+          <h4>Suero Recuperación</h4>
+          <span class="price-tag">$150.000</span>
+          <p>Electrolitos, B-complex y antiinflamatorios</p>
+        </div>
+        <div class="suero-item">
+          <h4>Suero Detox</h4>
+          <span class="price-tag">$160.000</span>
+          <p>Glutatión + vitaminas para depuración profunda</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contacto" class="cta-section">
+  <div class="section-inner">
+    <span class="eyebrow">¿Lista para empezar?</span>
+    <h2>Agenda tu cita hoy</h2>
+    <p>Escríbenos por WhatsApp y te orientamos para encontrar el tratamiento perfecto para ti. Primera valoración sin costo.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="https://api.whatsapp.com/send/?phone=573018265460&text&type=phone_number&app_absent=0" class="btn btn-primary">📱 WhatsApp</a>
+      <a href="https://www.instagram.com/sofiamarin_centro_estetico?igsh=NzRycWlsNTNkNmhj" class="btn btn-outline">📸 Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="section-inner">
+    <img src="img/Portada.jpg" alt="Sofía Marín Centro Estético" class="footer-logo">
+    <p class="footer-tagline">Tu piel. Tu ritual. Tu versión más luminosa.</p>
+    <ul class="footer-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre">Sobre nosotros</a></li>
+      <li><a href="#faciales">Faciales</a></li>
+      <li><a href="#corporales">Corporales</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Sofía Marín Centro Estético · Medellín, Colombia · Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<script>
+function toggleSteps(btn) {
+  const list = btn.nextElementSibling;
+  const isOpen = list.classList.contains('open');
+  list.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.querySelector('span:last-child').textContent = isOpen ? '▾' : '▴';
+  btn.childNodes[0].textContent = isOpen ? 'Ver protocolo completo ' : 'Ocultar protocolo ';
+}
+
+// Hamburger menu
+const hamburger = document.getElementById('nav-hamburger');
+const navMenu   = document.getElementById('nav-links');
+if (hamburger && navMenu) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = navMenu.classList.contains('mobile-open');
+    navMenu.classList.toggle('mobile-open', !isOpen);
+    hamburger.classList.toggle('open', !isOpen);
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+  });
+  // Close menu when any link is clicked
+  document.querySelectorAll('.nav-close-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('mobile-open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+// Smooth nav active state
+const sections      = document.querySelectorAll('section[id]');
+const navScrollLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+  });
+  navScrollLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--rose)' : '';
+  });
+});
+
+// Entrance animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.treatment-card, .about-grid, .stat-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+
+<script>
+// ── Gallery auto-rotate + dots ──
+(function () {
+  document.querySelectorAll('.gallery').forEach(function (g) {
+    var track  = g.querySelector('.gallery-track');
+    var imgs   = g.querySelectorAll('.gallery-img');
+    var dots   = g.querySelectorAll('.gallery-dot');
+    var count  = g.querySelector('.gallery-counter strong');
+    var n      = imgs.length;
+    var idx    = 0;
+    var timer  = null;
+    var DELAY  = 4000;
+
+    function go(i) {
+      idx = (i + n) % n;
+      track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+      dots.forEach(function (d, k) { d.classList.toggle('active', k === idx); });
+      if (count) count.textContent = String(idx + 1).padStart(2, '0');
+    }
+    function next() { go(idx + 1); }
+    function start() { stop(); timer = setInterval(next, DELAY); }
+    function stop()  { if (timer) clearInterval(timer); }
+
+    dots.forEach(function (d, k) {
+      d.addEventListener('click', function () { go(k); start(); });
+    });
+    g.addEventListener('mouseenter', stop);
+    g.addEventListener('mouseleave', start);
+
+    if (n > 1) start();
+  });
+})();
+</script>
+</body>
+</html>

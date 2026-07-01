@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sofía Marín — Centro Estético</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -168,49 +168,45 @@
   .hero-content h1 { color: white; margin-bottom: 1.5rem; }
   .hero-content h1 em { font-style: italic; color: var(--blush); }
 
-  /* Logo destacado en el hero */
+  /* Logo del hero: círculo limpio usando la luminancia del propio PNG.
+     El logo tiene un fondo gris horneado (RGB 194,195,196) que se vuelve
+     transparente con mask-mode: luminance → solo el "SM" y la tipografía
+     del logo quedan visibles, sobre el carrusel del hero. */
   .hero-brand {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: clamp(120px, 16vw, 180px);
-    height: clamp(120px, 16vw, 180px);
-    margin-bottom: 1.8rem;
-    border-radius: 50%;
-    background: rgba(250,247,244,0.06);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(201,169,110,0.45);
-    box-shadow:
-      0 12px 48px rgba(0,0,0,0.45),
-      inset 0 0 24px rgba(201,169,110,0.10);
-    padding: 14px;
-    position: relative;
-    overflow: hidden;
+    display: inline-block;
+    width: clamp(150px, 19vw, 210px);
+    height: clamp(150px, 19vw, 210px);
+    margin-bottom: 2rem;
+    background: transparent;
+    padding: 0;
+    line-height: 0;
+    /* Recorte circular perfecto + soporte para mask-mode luminance */
+    -webkit-mask-image: radial-gradient(circle, #000 100%, transparent 100%);
+            mask-image: radial-gradient(circle, #000 100%, transparent 100%);
   }
 
   .hero-brand img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 50%;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.45));
+    background: transparent;
+    /* La parte clara (gris de fondo) se vuelve transparente;
+       la parte oscura (monograma + texto) se mantiene opaca */
+    -webkit-mask-mode: luminance;
+            mask-mode: luminance;
+    -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    filter:
+      brightness(1.6)
+      drop-shadow(0 0 12px rgba(255,255,255,0.25))
+      drop-shadow(0 8px 24px rgba(0,0,0,0.5));
   }
-
-  .hero-brand::before {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    border: 1px dashed rgba(201,169,110,0.45);
-    animation: brandSpin 28s linear infinite;
-    pointer-events: none;
-  }
-
-  @keyframes brandSpin { to { transform: rotate(360deg); } }
 
   @media (max-width: 480px) {
-    .hero-brand { width: 110px; height: 110px; padding: 10px; }
+    .hero-brand { width: 130px; height: 130px; }
   }
   .hero-subtitle {
     color: rgba(255,255,255,0.72);
@@ -1214,7 +1210,7 @@
 <!-- NAV -->
 <nav>
   <a href="#inicio" class="nav-logo">
-    <img src="img/brand/logo.svg" alt="Sofía Marín Centro Estético logo">
+    <img src="img/brand/logo.png" alt="Sofía Marín Centro Estético logo">
     <span class="nav-name">Sofía Marín</span>
   </a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -1252,7 +1248,7 @@
   </div>
   <div class="hero-content">
     <div class="hero-brand">
-      <img src="img/brand/logo.svg" alt="Sofía Marín Centro Estético">
+      <img src="img/brand/logo.png" alt="Sofía Marín Centro Estético">
     </div>
     <span class="eyebrow">Centro Estético · Medellín</span>
     <h1>Tu piel merece lo <em>mejor.</em></h1>
@@ -2136,7 +2132,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="section-inner">
-    <img src="img/brand/logo.svg" alt="Sofía Marín Centro Estético" class="footer-logo">
+    <img src="img/brand/logo.png" alt="Sofía Marín Centro Estético" class="footer-logo">
     <p class="footer-tagline">Tu piel. Tu ritual. Tu versión más luminosa.</p>
     <ul class="footer-links">
       <li><a href="#inicio">Inicio</a></li>

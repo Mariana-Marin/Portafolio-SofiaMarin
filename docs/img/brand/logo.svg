@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFEFF1"/>
+      <stop offset="50%" stop-color="#F4F4F6"/>
+      <stop offset="100%" stop-color="#E2E2E5"/>
+    </linearGradient>
+    <linearGradient id="sm" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8E8EA"/>
+      <stop offset="50%" stop-color="#C2C5C9"/>
+      <stop offset="100%" stop-color="#9CA0A5"/>
+    </linearGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Dashed outer ring -->
+  <ellipse cx="160" cy="90" rx="156" ry="86" fill="none"
+           stroke="#A8ACB1" stroke-width="0.7" stroke-dasharray="3 2.5"/>
+
+  <!-- Main badge background -->
+  <ellipse cx="160" cy="90" rx="148" ry="80" fill="url(#bg)"/>
+
+  <!-- Subtle inner highlight -->
+  <ellipse cx="125" cy="55" rx="80" ry="22" fill="white" opacity="0.35"/>
+
+  <!-- SM Monogram (large, behind the script) -->
+  <text x="60" y="135" font-family="Cormorant Garamond, Garamond, Georgia, serif"
+        font-size="130" font-weight="400" fill="url(#sm)" letter-spacing="-4">SM</text>
+
+  <!-- Sofía Marín (script) -->
+  <text x="200" y="92" font-family="'Great Vibes', 'Brush Script MT', cursive"
+        font-size="38" font-weight="400" fill="#2E2928" text-anchor="middle">Sofía Marín</text>
+
+  <!-- Centro Estético -->
+  <line x1="140" y1="148" x2="175" y2="148" stroke="#9CA0A5" stroke-width="0.7"/>
+  <text x="200" y="153" font-family="Jost, -apple-system, sans-serif"
+        font-size="11" fill="#6E6E72" letter-spacing="3" text-anchor="middle"
+        font-weight="400">centro estético</text>
+  <line x1="225" y1="148" x2="260" y2="148" stroke="#9CA0A5" stroke-width="0.7"/>
+</svg>
